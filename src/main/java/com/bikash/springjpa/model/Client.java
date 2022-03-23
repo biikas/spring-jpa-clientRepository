@@ -1,7 +1,9 @@
 package com.bikash.springjpa.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.NaturalId;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -19,7 +21,7 @@ public class Client {
     //Id as primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(name = "active")
     private Character active;
@@ -35,6 +37,11 @@ public class Client {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="recorded_date",nullable = false)
-    private Date recorded_date;
+    private Date date_recorded;
+
+
+
+
+
 
 }

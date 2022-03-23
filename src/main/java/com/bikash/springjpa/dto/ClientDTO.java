@@ -1,7 +1,9 @@
 package com.bikash.springjpa.dto;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
+
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @ToString
 public class ClientDTO {
+
     private int id;
     private char active;
     private String name;
     private String username;
     private String password;
+    private Date date_recorded;
 }
