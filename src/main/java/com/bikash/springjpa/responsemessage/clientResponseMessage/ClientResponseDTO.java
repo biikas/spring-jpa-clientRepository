@@ -1,17 +1,23 @@
-package com.bikash.springjpa.controller.ResponseMessage;
+package com.bikash.springjpa.responsemessage.clientResponseMessage;
 
-import com.bikash.springjpa.model.Client;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseResponse{
+public class ClientResponseDTO {
     private boolean success;
     private String message;
     private int code;
-    private List<ClientResponse> list;}
+    private ClientResponse clientResponse;
+    //private Map<String,String> clientDetails;
+
+
+
+
+
+}

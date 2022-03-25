@@ -1,22 +1,22 @@
 package com.bikash.springjpa.service;
 
-import com.bikash.springjpa.controller.ResponseMessage.BaseResponse;
-import com.bikash.springjpa.controller.ResponseMessage.ResponseDTO;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientBaseResponse;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponseDTO;
 import com.bikash.springjpa.dto.ClientDTO;
 import com.bikash.springjpa.model.Client;
 
 public interface ClientService {
-    ResponseDTO saveClient(ClientDTO clientDTO);
+    ClientResponseDTO saveClient(ClientDTO clientDTO);
 
-    BaseResponse getAllClient();
+    ClientBaseResponse getAllClient();
 
-    ResponseDTO getClient(int id);
+    ClientResponseDTO getClient(int id);
 
-    BaseResponse getClientByActive(char active);
+    ClientBaseResponse getClientByActive(char active);
 
     public Client getClientByUsername(String username);
 
-    public ResponseDTO updateClient(ClientDTO clientDTO, int id);
+    public ClientResponseDTO updateClient(ClientDTO clientDTO, int id);
 
     public boolean changeStatus(ClientDTO clientDTO, int id);
 

@@ -1,4 +1,4 @@
-package com.bikash.springjpa.controller.ResponseMessage;
+package com.bikash.springjpa.responsemessage.clientResponseMessage;
 
 import lombok.*;
 

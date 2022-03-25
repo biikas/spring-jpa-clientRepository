@@ -1,10 +1,10 @@
 package com.bikash.springjpa.controller;
 
 
-import com.bikash.springjpa.controller.ResponseMessage.BaseResponse;
-import com.bikash.springjpa.controller.ResponseMessage.ResponseDTO;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientBaseResponse;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponseDTO;
 import com.bikash.springjpa.dto.ClientDTO;
-import com.bikash.springjpa.mapper.client.ResponseMapper;
+import com.bikash.springjpa.mapper.client.ClientResponseMapper;
 
 import com.bikash.springjpa.service.ClientService;
 
@@ -21,17 +21,17 @@ public class ClientController {
     private ClientService clientService;
 
     @Autowired
-    private ResponseMapper responseMapper;
+    private ClientResponseMapper responseMapper;
 
 
     @PostMapping(value = "add")
-    public ResponseDTO addClient(@RequestBody ClientDTO clientDTO) {
+    public ClientResponseDTO addClient(@RequestBody ClientDTO clientDTO) {
         return clientService.saveClient(clientDTO);
     }
 
 
     @PutMapping(value = "update/{id}")
-    public ResponseDTO updateClient(@PathVariable int id, @RequestBody ClientDTO clientDTO) {
+    public ClientResponseDTO updateClient(@PathVariable int id, @RequestBody ClientDTO clientDTO) {
         return clientService.updateClient(clientDTO,id);
     }
 
@@ -43,16 +43,16 @@ public class ClientController {
     }
 
     @GetMapping(value = "list")
-    public BaseResponse getAllClient() {
-        return (BaseResponse) clientService.getAllClient();}
+    public ClientBaseResponse getAllClient() {
+        return (ClientBaseResponse) clientService.getAllClient();}
 
     @GetMapping(value = "/{id}")
-    public ResponseDTO getById(@PathVariable int id) {
+    public ClientResponseDTO getById(@PathVariable int id) {
         return clientService.getClient(id);
     }
 
     @GetMapping(value = "active/client")
-    public BaseResponse getActive() {
+    public ClientBaseResponse getActive() {
         return  clientService.getClientByActive('Y');
     }
 }

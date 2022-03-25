@@ -11,7 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name="api_data")
-public class Api_Data {
+public class ApiData {
     //id as primary key
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

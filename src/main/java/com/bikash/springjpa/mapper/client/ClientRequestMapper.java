@@ -1,29 +1,28 @@
 package com.bikash.springjpa.mapper.client;
 
-import com.bikash.springjpa.controller.ResponseMessage.BaseResponse;
-import com.bikash.springjpa.controller.ResponseMessage.ClientResponse;
-import com.bikash.springjpa.controller.ResponseMessage.ResponseDTO;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientBaseResponse;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponse;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponseDTO;
 import com.bikash.springjpa.model.Client;
 import com.bikash.springjpa.utility.DateUtility;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Component
-public class RequestMapper {
-    public static ResponseDTO responseToClientById(Client client){
+public class ClientRequestMapper {
+    public static ClientResponseDTO responseToClientById(Client client){
         ClientResponse clientResponse =new ClientResponse();
         clientResponse.setName(client.getName());
         DateUtility dateUtility = new DateUtility();
         String d = String.valueOf(client.getDate_recorded());
         clientResponse.setDateCreated(dateUtility.formatDate(d));
-        return new ResponseDTO(true,"client created successfully",1,clientResponse);
+        return new ClientResponseDTO(true,"client created successfully",1,clientResponse);
 
     }
-    public static BaseResponse responseToGetAllClient(List<Client> client){
-        BaseResponse baseResponse =new BaseResponse();
+    public static ClientBaseResponse responseToGetAllClient(List<Client> client){
+        ClientBaseResponse baseResponse =new ClientBaseResponse();
         List<ClientResponse> list =new ArrayList<>();
         DateUtility dateUtility = new DateUtility();
 
