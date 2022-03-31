@@ -29,12 +29,15 @@ public class ClientServiceImpl implements ClientService {
 
     //done
     @Override
-    public ClientResponseDTO saveClient(ClientDTO clientDTO) {
+    public ClientResponseDTO saveClient(ClientDTO clientDTO) throws Exception {
+
+
         Client existingClient = clientRepository.findByUsername(clientDTO.getUsername());
         if (existingClient != null) {
-            log.info("data already exists");
             Client client = getClientByUsername(clientDTO.getUsername());
-            return ClientResponseMapper.convertToClientFailureResponse(client);
+//            return ClientResponseMapper.convertToClientFailureResponse(client);
+            throw new Exception("Username already exists");
+
         } else {
             log.info("data ready for saving");
             clientRepository.save(clientMapper.convertToSaveClient(clientDTO));

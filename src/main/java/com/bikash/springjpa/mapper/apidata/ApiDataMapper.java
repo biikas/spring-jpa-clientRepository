@@ -20,20 +20,21 @@ public class ApiDataMapper {
     @Autowired
     private ClientRepository clientRepository;
 
-    public ApiData ConvertToSaveApiData(ApiDataDTO api_dataDTO, Client client) {
+    public ApiData convertToSaveApiData(ApiDataDTO apiDataDTO, Client client) {
         ApiData api_data = new ApiData();
-        api_data.setApi_name(api_dataDTO.getApi_name());
-        api_data.setApi_data(api_dataDTO.getApi_data());
-        api_data.setClient(client);
 
+        log.info(apiDataDTO.getApi_name());
+        api_data.setApi_name(apiDataDTO.getApi_name());
+        api_data.setApi_data(apiDataDTO.getApi_data());
+        api_data.setClient(client);
         return api_data;
     }
-    public ApiData convertToUpdateApiData(ApiDataDTO api_dataDTO, Client client){
+    public ApiData convertToUpdateApiData(ApiDataDTO apiDataDTO, Client client){
 
         ApiData api_data =apiDataRepository.getByClient(client);
         log.info("reached here");
-        api_data.setApi_name(api_dataDTO.getApi_name());
-        api_data.setApi_data(api_dataDTO.getApi_data());
+        api_data.setApi_name(apiDataDTO.getApi_name());
+        api_data.setApi_data(apiDataDTO.getApi_data());
         log.info("finally reached here");
 
         return api_data;
@@ -44,8 +45,8 @@ public class ApiDataMapper {
     }
     public List<ApiData> convertToGetApiUser(Client client){
         log.info("reached here");
-        List<ApiData> api_data= apiDataRepository.findByClient(client);
-        return api_data;
+        List<ApiData> apiData = apiDataRepository.findByClient(client);
+        return apiData;
 
 
     }

@@ -26,7 +26,9 @@ public class ApiDataServiceImpl implements ApiDataService {
 
     @Override
     public boolean saveApiData(ApiDataDTO api_dataDTO, Client client) {
-        apiDataRepository.save(apiDataMapper.ConvertToSaveApiData(api_dataDTO,client));
+        log.info(api_dataDTO.getApi_name());
+        apiDataRepository.save(apiDataMapper.convertToSaveApiData(api_dataDTO,client));
+
         log.info("api saved successfully");
         return true;
 
@@ -34,12 +36,16 @@ public class ApiDataServiceImpl implements ApiDataService {
 
     @Override
     public boolean updateApiData(ApiDataDTO api_dataDTO, Client client) {
+
+        log.info("api data service impl ");
         apiDataRepository.save(apiDataMapper.convertToUpdateApiData(api_dataDTO,client));
+        log.info("api data service impl2");
         return true;
     }
 
     @Override
     public List<ApiData> getAllApiData() {
+
         return apiDataMapper.convertToGetList();
     }
 

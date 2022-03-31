@@ -22,7 +22,7 @@ public class ClientMapper {
     public Client convertToSaveClient(ClientDTO clientDTO) {
         Client client = new Client();
         client.setName(clientDTO.getName());
-        client.setActive(clientDTO.getActive());
+        client.setActive('Y');
         client.setUsername(clientDTO.getUsername());
         client.setPassword(clientDTO.getPassword());
         client.setDate_recorded(new Date());
@@ -42,7 +42,7 @@ public class ClientMapper {
             client.setActive(client.getActive());
             client.setUsername(client.getUsername());
             client.setPassword(client.getPassword());
-            clientDTO.setDate_recorded(client.getDate_recorded());
+            client.setDate_recorded(client.getDate_recorded());
 
             clientDTOList.add(clientDTO);
         }
@@ -74,7 +74,7 @@ public class ClientMapper {
     }
     public Client convertToChangeStatus(ClientDTO clientDTO,int id){
             Client client = clientRepository.getById(id);
-            client.setActive(clientDTO.getActive());
+            //client.setActive(clientDTO.getActive());
             return client;
     }
 

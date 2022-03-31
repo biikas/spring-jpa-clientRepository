@@ -1,19 +1,23 @@
 package com.bikash.springjpa.controller;
 
 
-import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientBaseResponse;
-import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponseDTO;
 import com.bikash.springjpa.dto.ClientDTO;
 import com.bikash.springjpa.mapper.client.ClientResponseMapper;
-
+import com.bikash.springjpa.repository.TokenRepository;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientBaseResponse;
+import com.bikash.springjpa.responsemessage.clientResponseMessage.ClientResponseDTO;
 import com.bikash.springjpa.service.ClientService;
-
+import jdk.nashorn.internal.parser.Token;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins="http://localhost:4200/")
 @RequestMapping(value = "clients")
 public class ClientController {
 
@@ -23,10 +27,24 @@ public class ClientController {
     @Autowired
     private ClientResponseMapper responseMapper;
 
+    @Autowired
+    private TokenRepository tokenRepository;
 
-    @PostMapping(value = "add")
-    public ClientResponseDTO addClient(@RequestBody ClientDTO clientDTO) {
-        return clientService.saveClient(clientDTO);
+    protected String token;
+
+
+//    @PostMapping(value = "add")
+//    public ClientResponseDTO addClient(@RequestBody ClientDTO clientDTO) {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("token","token value");
+//        return clientService.saveClient(clientDTO);
+//    }
+    @PostMapping(value="add")
+    public ResponseEntity<ClientResponseDTO> addClient(@RequestBody ClientDTO clientDTO) throws Exception {
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set(HttpHeaders.AUTHORIZATION, "mhbjh");
+        return new ResponseEntity<>((clientService.saveClient(clientDTO)),headers, HttpStatus.OK);
     }
 
 

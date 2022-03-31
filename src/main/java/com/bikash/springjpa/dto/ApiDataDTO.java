@@ -10,8 +10,8 @@ import lombok.*;
 @ToString
 public class ApiDataDTO {
 
-    private Integer id;
+
     private String api_name;
     private String api_data;
-    private Integer Client_id;
+    private Integer clientId;
 }

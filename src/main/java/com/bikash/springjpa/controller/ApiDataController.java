@@ -16,6 +16,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(value = "data")
+@CrossOrigin(origins="http://localhost:4200/")
 public class ApiDataController {
 
     @Autowired
@@ -24,10 +25,12 @@ public class ApiDataController {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping(value="add")
+    @PostMapping(value="add/{username}")
     public boolean addApiData(@PathVariable String username, @RequestBody ApiDataDTO api_dataDTO){
-        Client client =clientService.getClientByUsername(username);
+        log.info(api_dataDTO.getApi_name());
+        Client client =clientService.getClientByUsername(username);log.info(api_dataDTO.getApi_name());
         apiDataService.saveApiData(api_dataDTO,client);
+        log.info(api_dataDTO.getApi_name());
         return true;
     }
     @PutMapping(value ="update/{username}")
@@ -35,7 +38,7 @@ public class ApiDataController {
         log.info("checking");
         Client client =clientService.getClientByUsername(username);
         log.info("some message");
-       apiDataService.updateApiData(api_dataDTO,client);
+        apiDataService.updateApiData(api_dataDTO,client);
     }
     @GetMapping(value = "list")
     public List<ApiData> listApiData(){
@@ -46,9 +49,6 @@ public class ApiDataController {
     public ApiBaseRespons usernameApiData(@PathVariable String username){
         log.info("username api data ready to be fetched");
         Client client =clientService.getClientByUsername(username);
-//        return (Api_Data) apiDataService.getApiDataUser(client);
-       // return apiDataService.getApiDataUser(client);
         return (ApiBaseRespons) apiDataService.getApiDataUser(client);
-
     }
 }

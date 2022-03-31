@@ -4,13 +4,12 @@ import com.bikash.springjpa.model.Client;
 import com.bikash.springjpa.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "login")
+
+@CrossOrigin(origins="http://localhost:4200/")
 @Slf4j
 public class LoginController {
 
@@ -18,7 +17,7 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping
-    public void login(@RequestBody Client client){
+    public void login(@RequestBody Client client) throws Exception {
         log.info("login controller");
 
         loginService.authentication(client);

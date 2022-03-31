@@ -20,4 +20,8 @@ public class ClientToken {
     @OneToOne
     @JoinColumn(name="client_id")
     private Client client;
+
+    @Column(name="status")
+    private char active;
+
 }

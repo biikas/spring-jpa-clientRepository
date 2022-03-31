@@ -6,7 +6,7 @@ import com.bikash.springjpa.dto.ClientDTO;
 import com.bikash.springjpa.model.Client;
 
 public interface ClientService {
-    ClientResponseDTO saveClient(ClientDTO clientDTO);
+    ClientResponseDTO saveClient(ClientDTO clientDTO) throws Exception;
 
     ClientBaseResponse getAllClient();
 

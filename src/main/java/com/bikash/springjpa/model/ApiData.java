@@ -27,4 +27,6 @@ public class ApiData {
     @JoinColumn(name="client_id")
     private Client client;
 
+
+
 }
