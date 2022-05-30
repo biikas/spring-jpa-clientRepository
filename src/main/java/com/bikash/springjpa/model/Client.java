@@ -39,9 +39,4 @@ public class Client {
     @Column(name="recorded_date",nullable = false)
     private Date date_recorded;
 
-
-
-
-
-
 }
