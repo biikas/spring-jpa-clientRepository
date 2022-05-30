@@ -21,10 +21,10 @@ public class Student {
     @Column(name = "ACTIVE")
     private Character active;
 
-    @Column(name = "FIRST_NAME", length = 100, nullable = false)
+    @Column(name = "FIRST_NAME", length = 100,nullable = false)
     private String firstName;
 
-    @Column(name = "LAST_NAME", length = 100, nullable = false)
+    @Column(name = "LAST_NAME", length = 100,nullable = false)
     private String lastName;
 
     @Column(name = "ADDRESS", length = 50)
@@ -39,5 +39,9 @@ public class Student {
 
     @Column(name="SUBJECT")
     private String subject;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="JOIN_DATE",nullable = false)
+    private Date joinDate;
 
 }

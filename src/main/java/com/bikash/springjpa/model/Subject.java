@@ -2,8 +2,11 @@ package com.bikash.springjpa.model;
 
 
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,8 +27,11 @@ public class Subject {
     @Column(name = "NAME", length = 50)
     private String name;
 
-    @OneToOne
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="STUDENT_ID")
     private Student student;
+
+
 
 }
